@@ -1,7 +1,7 @@
 class Singleton:
     """
     A singleton is a class that can only be instantiated once.
-    Any subsequent instantiation returns the same instance.
+    Any subsequent instantiation returns the already existing instance.
     """
     
     # Holds the single instance
@@ -9,9 +9,13 @@ class Singleton:
     
 
     def __new__(cls, *args, **kwargs):
-        """Override the __new__ method to control instance creation."""
-        # If singleton doesn't exist, create new instance
-        if cls._instance is None:
+        """
+        __new__ creates instances before they are initialized by __init__.
+        Override to control instance creation.
+        """
+
+        # If singleton doesn't exist, create new instance. Otherwise return the existing instance.
+        if cls._instance == None:
             cls._instance = super().__new__(cls)
             cls._instance._initialized = False
         return cls._instance
@@ -23,7 +27,10 @@ class Singleton:
         # Make sure singleton is only initialized once, even if __init__ is called more than once
         if not self._initialized:
             self._initialized = True
-            self.value = value if value is not None else "Default Value"
+            if value == None:
+                self.value = "Default Value"
+            else:
+                self.value = value
     
 
     def get_value(self):
@@ -37,7 +44,6 @@ class Singleton:
 
 
 
-# Usage example
 if __name__ == "__main__":
 
     value1 = "String_1"

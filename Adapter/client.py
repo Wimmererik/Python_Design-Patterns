@@ -3,21 +3,21 @@
 class Client:
     def transfer(self,
                  transfer_system,       # System used for transfer
-                 from_account,          # Account withdrawing amount
-                 to_account,            # Account depositing amount
+                 source_account,          # Account withdrawing amount
+                 target_account,            # Account depositing amount
                  amount):               # Amount being transferred
         
-        print(f"Performing transfer for {amount}€ from '{from_account.name}' to '{to_account.name}'...")
+        print(f"Performing transfer for {amount}€ from '{source_account.name}' to '{target_account.name}'...")
 
         print(f"\nBefore transfer:")
-        print(f"- {from_account}")
-        print(f"- {to_account}")
+        print(f"- {source_account}")
+        print(f"- {target_account}")
         
-        success = transfer_system.transfer(from_account, to_account, amount)
+        success = transfer_system.transfer(source_account, target_account, amount)
         
         print(f"\nAfter transfer:")
-        print(f"- {from_account}")
-        print(f"- {to_account}")
+        print(f"- {source_account}")
+        print(f"- {target_account}")
         if success:
             print(f"Status: Success\n")
         else:

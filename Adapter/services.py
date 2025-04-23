@@ -1,9 +1,7 @@
 ### Services to translate between
 
-from interface import TransferSystem
-
 # Legacy transfer system
-class LegacyTransferSystem(TransferSystem):
+class LegacyTransferSystem:
     """Transfers expect source, target and amount to be given as separate parameters."""
 
     def transfer(self, 

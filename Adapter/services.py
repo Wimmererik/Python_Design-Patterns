@@ -1,7 +1,9 @@
 ### Services to translate between
 
+from interface import TransferSystem
+
 # Legacy transfer system
-class LegacyTransferSystem:
+class LegacyTransferSystem(TransferSystem):
     """Transfers expect source, target and amount to be given as separate parameters."""
 
     def transfer(self, 
@@ -23,7 +25,8 @@ class ModernTransferSystem:
     """
     Difference to legacy system:\n
     - Transfers expect a list containing source, target and amount to be given as a parameter.
-    - Status messages are given as key:value pairs"""
+    - Status messages are given as key:value pairs
+    """
 
     def transfer(self, transfer_data):
         print(f"Processing transfer...")

@@ -1,17 +1,15 @@
 ### Adapter to enable use of modern system with legacy client
 
-class TransferAdapter:
+from interface import TransferSystem
+
+class TransferAdapter(TransferSystem):
     def __init__(self, modern_system):
         self.system = modern_system
     
     def transfer(self, source_account, target_account, amount):
         # Convert to expected format
-        transfer_data = [
-            source_account,
-            target_account,
-            amount
-        ]
+        transfer_data = [source_account, target_account, amount]
         
-        # Call the adapted system and convert the result
+        # Call function in new system and convert result
         result = self.system.transfer(transfer_data)
         return result["status"] == "success"

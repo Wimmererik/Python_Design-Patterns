@@ -21,6 +21,5 @@ class Client:
         print(f"- {target_account}")
         if success:
             print(f"Client Status: Success\n")
-            
         else:
             print(f"Client Status: Failed\n")

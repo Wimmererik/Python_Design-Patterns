@@ -13,4 +13,7 @@ class TransferAdapter(TransferSystem):
         
         # Call function in list based system and convert result
         result = self.system.transfer(transfer_data)
-        return result["status"] == "success"    # Client will not know reason for failure
+        if result["status"] == "failed":
+            print(f"Transfer {result['status']}: {result['reason']}")
+            return False
+        return True
